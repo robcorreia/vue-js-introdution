@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <style>
+      .green {
+        color: green;
+      }
+
+      .red {
+        color: red;
+      }
+    </style>
+
+    <div id="app">
+      <div>
+        <p>{{google.companyName}}</p>
+        <p :class="google.marketCap > apple.marketCap ? 'green' : 'red'">
+          {{google.marketCap}}
+        </p>
+      </div>
+
+      <div>
+        <p>{{apple.companyName}}</p>
+        <p :class="apple.marketCap > google.marketCap ? 'green' : 'red'">
+          {{apple.marketCap}}
+        </p>
+      </div>
+      <button @click="getData">Puxar dados</button>
+    </div>
+
+    <!--
+      Utilizando as API's
+      https://api.origamid.dev/stock/aapl/quote
+      https://api.origamid.dev/stock/googl/quote
+
+      - Compare o marketCap (valor de
+      mercado) entre ambas.
+
+      - Mostre o nome das empresas e o valor
+      na interace (companyName e marketCap).
+
+      - Mude a cor para verde o nome da empresa com
+      maior marketCap e vermelho a com menor.
+    -->
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          google: "",
+          apple: "",
+        },
+        methods: {
+          getGoogle() {
+            fetch("https://api.origamid.dev/stock/googl/quote")
+              .then((response) => response.json())
+              .then((json) => {
+                this.google = json;
+              });
+          },
+          getApple() {
+            fetch("https://api.origamid.dev/stock/aapl/quote")
+              .then((response) => response.json())
+              .then((json) => {
+                this.apple = json;
+              });
+          },
+          getData() {
+            this.getGoogle();
+            this.getApple();
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <style>
+      .azul {
+        color: blue;
+      }
+
+      .verde {
+        color: green;
+      }
+      .ativo {
+        background: red;
+      }
+
+      .pink {
+        background-color: pink;
+      }
+    </style>
+    <div id="app">
+      <p v-bind:class="[cor, background]">texto azul</p>
+      <p :class="verde">texto verde</p>
+      <p :class="{ativo: estaAtivo, verde: elementoVerde}">mostrar texto</p>
+      <button @click="estaAtivo = !estaAtivo">mudar</button>
+
+      <a :style="{background: bgColor, fontSize: size + 'px' }">Estilize Ele</a>
+      <button @click="size++">aumentar</button>
+      <button :style="estiloBotao">novo botao</button>
+      <button :style="estiloParagrafo">novo botao</button>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          cor: "azul",
+          background: "pink",
+          verde: "verde",
+          elementoVerde: false,
+          estaAtivo: false,
+          bgColor: "blue",
+          size: 20,
+          estiloBotao: {
+            background: "tomato",
+            borderRadius: "6px",
+            fontSize: "20px",
+            color: "white",
+            border: "none",
+          },
+        },
+        computed: {
+          estiloParagrafo() {
+            const tamanho = Math.random() * 100;
+            return {
+              fontSize: tamanho + "px",
+            };
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <form>
+        <label for="name">Nome</label>
+        <input id="name" type="text" v-model="form.name" />
+        <label for="email">Email</label>
+        <input id="email" type="email" v-model="form.email" />
+        <label for="phone">Telefone</label>
+        <input id="phone" type="text" v-model="form.phone" />
+        <label for="message">Mensagem</label>
+        <textarea id="message" v-model="form.message"></textarea><br />
+        <input @click.prevent="handleSubmit" type="submit" />
+      </form>
+
+      <div>
+        {{formData}}
+        <ul>
+          <li v-for="(dado, key) in formData">{{key}}: {{dado}}</li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          form: {
+            name: "",
+            email: "",
+            phone: "",
+            message: "",
+          },
+          formData: {},
+        },
+        methods: {
+          handleSubmit() {
+            this.formData = {
+              nome: this.form.name,
+              email: this.form.email,
+              telefone: this.form.phone,
+              mensagem: this.form.message,
+            };
+          },
+        },
+      });
+    </script>
+
+    <style>
+      label {
+        display: block;
+      }
+    </style>
+
+    <!-- 
+
+        2 - Crie um formulário com, nome, email, telefone e mensagem.
+        Ao clicar em enviar, as informações preenchidas no formulário
+        devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+      -->
+  </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" v-model.lazy="nome" /> {{nome}}<br />
+      <input type="email" v-model.trim="email" /> {{email}}
+
+      <input type="checkbox" id="receberEmail" v-model="receberEmail" />
+      <label for="receberEmail"> Receber email</label>
+      <p>{{receberEmail}}</p>
+
+      <div>
+        <input id="azul" type="radio" name="azul" v-model="cor" value="azul" />
+        <label for="azul">azul</label>
+        <input
+          id="verde"
+          type="radio"
+          name="verde"
+          v-model="cor"
+          value="verde"
+        />
+        <label for="verde">verde</label>
+        <input
+          id="vermelho"
+          type="radio"
+          name="vermelho"
+          v-model="cor"
+          value="vermelho"
+        />
+        <label for="vermelho">vermelho</label>
+      </div>
+
+      {{cor}}
+
+      <div>
+        <select v-model="fruta">
+          <option disabled value="">Selecione uma fruta</option>
+          <option value="banana">banana</option>
+          <option value="morango">morango</option>
+          <option value="uva">uva</option>
+        </select>
+      </div>
+      {{fruta}}
+
+      <input type="text" v-model.number="ano" /> {{ano}}
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          nome: "Robson",
+          email: "",
+          receberEmail: false,
+          cor: "",
+          fruta: "",
+          ano: 0,
+        },
+      });
+    </script>
+
+    <style></style>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{total}}</p>
+      <p>{{compra}}</p>
+      <button @click="incrementar">incrementar</button>
+      <button @click="diminuir">diminuir</button>
+      <button @click="addProduto('Camiseta')">add Produto</button>
+      <button @click="verEvento">event</button>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          compra: "",
+          total: 0,
+        },
+        methods: {
+          addProduto(produto) {
+            this.compra = produto;
+          },
+          incrementar() {
+            this.total++;
+          },
+          diminuir() {
+            this.total--;
+          },
+          verEvento(event) {
+            console.log(event);
+            this.teste();
+          },
+          teste() {
+            console.log("teste");
+          },
+        },
+      });
+      console.log(vm);
+
+      setTimeout(() => {
+        vm.logado = "sim";
+      }, 1000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <input type="color" v-model="btn.background" />
+      </div>
+      <div>
+        <input type="text" v-model="btn.width" placeholder="Width" />
+      </div>
+      <div>
+        <input type="text" v-model="btn.height" placeholder="Height" />
+      </div>
+      <div>
+        <input type="text" v-model="btn.fontSize" placeholder="Size" />
+      </div>
+      <div>
+        <input type="text" v-model="btn.fontFamily" placeholder="Font Family" />
+      </div>
+      <div>
+        <input type="color" v-model="btn.color" />
+      </div>
+      <div>
+        <input type="text" v-model="btn.textAlign" placeholder="Align" />
+      </div>
+      <div>
+        <input
+          type="text"
+          v-model.number="btn.borderRadius"
+          placeholder="Radius"
+        />
+      </div>
+      <a :style="btn" href="">Clique aqui</a>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          btn: {
+            display: "block",
+            background: "",
+            width: "0px",
+            height: "0px",
+            fontSize: "",
+            fontFamily: "",
+            textAlign: "",
+            color: "",
+            borderRadius: "",
+          },
+        },
+      });
+    </script>
+
+    <style></style>
+
+    <!-- 
+        1 - Crie um criador de botões.
+
+        O usuário poderá definir:
+        width,
+        height,
+        font-size,
+        font-family,
+        text-align,
+        background,
+        color,
+        border-radius,
+
+        As escolhas serão feitas em campos de
+        formulário. Cada escolha deverá ser 
+        refletida em um elemento (o botão).
+
+
+        2 - Crie um formulário com, nome, email, telefone e mensagem.
+        Ao clicar em enviar, as informações preenchidas no formulário
+        devem aparecer abaixo do mesmo. (previna o comportamento padrão do botão enviar)
+      -->
+  </body>
+</html>

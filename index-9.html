@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <!-- <div id="app">
+      <ul>
+        <li v-for="(curso, index) in cursos">{{curso}} {{index}}</div>
+      </ul>
+
+    </div>
+
+    <div id="app2">
+      <ul>
+        <li v-for="(estado, key) in estados" :key="key">{{key}} {{estado.populacao}}</li>
+      </ul>
+
+      <div v-for="n in 10">{{n}}</div>
+
+    </div> -->
+
+    <div id="app">
+      <ul>
+        <li v-for="item in lista">{{item}}</li>
+      </ul>
+      <button @click="removerItem">remover</button>
+      <button @click="modificarItem">modificar</button>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          lista: ["Item 1", "Item 2", "Item 3"],
+        },
+        methods: {
+          removerItem() {
+            this.lista.pop();
+          },
+          modificarItem() {
+            this.$set(this.lista, 0, "Banana");
+            // this.lista[0] = "Banana";
+          },
+        },
+      });
+      // const vm = new Vue({
+      //   el: "#app",
+      //   data: {
+      //     cursos: ["HTML", "CSS", "JavaScript", "PHP", "WordPress"],
+      //   },
+      // });
+
+      // const vm2 = new Vue({
+      // el: "#app2",
+      //   data: {
+      //     estados: {
+      //       sp: {
+      //         populacao: "45 milhões",
+      //         nome: "São Paulo"
+      //       },
+      //       mg: {
+      //         populacao: "21 milhões",
+      //         nome: "Minas Gerais"
+      //       },
+      //       rj: {
+      //         populacao: "17 milhões",
+      //         nome: "Rio de Janeiro"
+      //       }
+      //     }
+      //   }
+      // });
+    </script>
+  </body>
+</html>

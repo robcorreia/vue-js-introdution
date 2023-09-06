@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./vue.js"></script>
+    <title>Vue.js</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <input type="text" placeholder="CEP" maxlength="8" v-model="cep" />
+      <h1>{{cep}}</h1>
+      <ul>
+        <li v-for="(endereco, key) in address">{{key}}: {{endereco}}</li>
+      </ul>
+    </div>
+
+    <script>
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          cep: "",
+          address: {},
+        },
+        watch: {
+          cep(valorCep) {
+            if (this.cep.length === 8)
+              fetch(`https://viacep.com.br/ws/${valorCep}/json/`)
+                .then((response) => response.json())
+                .then((data) => (this.address = data));
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
